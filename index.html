@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Elohim · Asignación de Personal</title>
 
-<!-- Google Identity + Drive API -->
-<script src="https://accounts.google.com/gsi/client" async defer></script>
-<script src="https://apis.google.com/js/api.js" async defer></script>
-
 <!-- SheetJS para exportar Excel -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
@@ -175,7 +171,7 @@ header{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var
 // ════════════════════════════════════════════════
 // CONFIG — reemplaza con tu CLIENT_ID de Google Cloud Console
 // ════════════════════════════════════════════════
-const CLIENT_ID = '973564127080-45dujp61hm8kj5vljqn3nalou335a84f.apps.googleusercontent.com';
+const CLIENT_ID = 'TU_CLIENT_ID_AQUI.apps.googleusercontent.com';
 const SCOPES = 'https://www.googleapis.com/auth/drive.file profile email';
 const FILE_NAME = 'elohim-data.json';
 const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest';
@@ -683,14 +679,17 @@ window.initGapi = initGapi;
 window.initGis = initGis;
 </script>
 
-<!-- Cargar APIs después del DOM -->
+<!-- Cargar APIs con callbacks explícitos -->
 <script>
-window.addEventListener('load', () => {
+function onGapiLoad() {
   gapi.load('client', initGapi);
-  google.accounts.id.initialize({ client_id: CLIENT_ID });
+}
+function onGisLoad() {
   initGis();
-});
+}
 </script>
+<script src="https://apis.google.com/js/api.js?onload=onGapiLoad"></script>
+<script src="https://accounts.google.com/gsi/client" onload="onGisLoad()" async defer></script>
 
 </body>
 </html>
