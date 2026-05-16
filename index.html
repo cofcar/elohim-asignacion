@@ -9,7 +9,7 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#ffffff;--bg2:#f5f5f4;--bg3:#fafaf9;
+  --bg:#fff;--bg2:#f5f5f4;--bg3:#fafaf9;
   --border:#e5e5e4;--border2:#d4d4d3;
   --txt:#1c1917;--txt2:#78716c;--txt3:#a8a29e;
   --radius:8px;--radius-lg:12px;
@@ -20,10 +20,10 @@
   --shadow:0 1px 3px rgba(0,0,0,.08);
 }
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;background:var(--bg3);color:var(--txt);min-height:100vh}
-input,select,button,textarea{font-family:inherit}
+input,select,button{font-family:inherit}
 button{cursor:pointer}
-#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--bg3)}
-#app{display:none;max-width:1100px;margin:0 auto;padding:16px}
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh}
+#app{display:none;max-width:1200px;margin:0 auto;padding:16px}
 header{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:14px;box-shadow:var(--shadow)}
 .logo{font-size:15px;font-weight:700;letter-spacing:-.3px}
 .logo span{color:var(--blue)}
@@ -38,15 +38,17 @@ header{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var
 .nb{padding:6px 14px;font-size:12px;border:1px solid transparent;border-radius:var(--radius);background:transparent;color:var(--txt2);display:flex;align-items:center;gap:5px}
 .nb:hover{background:var(--bg2)}
 .nb.on{background:var(--bg);border-color:var(--border2);color:var(--txt);font-weight:500;box-shadow:var(--shadow)}
-.ctr{margin-left:auto;font-size:11px;color:var(--txt2)}
 .export-btn{padding:5px 11px;font-size:11px;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--txt2);display:flex;align-items:center;gap:4px}
 .export-btn:hover{background:var(--bg2);color:var(--txt)}
 .panel{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px;box-shadow:var(--shadow)}
 .sb{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:500;white-space:nowrap}
-.s1{background:#dbeafe;color:#1e40af}.s2{background:#fef9c3;color:#854d0e}.s3{background:#dcfce7;color:#166534}
+.s0{background:#f3e8ff;color:#6b21a8}
+.s1{background:#dbeafe;color:#1e40af}
+.s2{background:#fef9c3;color:#854d0e}
+.s3{background:#dcfce7;color:#166534}
 .mc{background:var(--bg2);border-radius:var(--radius);padding:10px 12px;border:1px solid var(--border)}
 .ml{font-size:11px;color:var(--txt2);margin-bottom:3px}
-.mv{font-size:22px;font-weight:600;color:var(--txt)}
+.mv{font-size:22px;font-weight:600}
 .al{padding:8px 11px;border-radius:var(--radius);font-size:12px;margin-bottom:8px;display:flex;align-items:flex-start;gap:7px;border:1px solid}
 .aok{background:var(--green-bg);color:var(--green-txt);border-color:#bbf7d0}
 .aw{background:var(--amber-bg);color:var(--amber-txt);border-color:#fde68a}
@@ -79,21 +81,24 @@ header{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var
 .tsm{padding:5px 12px;font-size:12px;border:1px solid var(--border2);border-radius:var(--radius);background:transparent;color:var(--txt2)}
 .tsm.on{background:var(--bg);color:var(--txt);font-weight:500;box-shadow:var(--shadow)}
 .tsm:hover:not(.on){background:var(--bg2)}
+/* Buscador proyecto */
+.ps-wrap{position:relative;margin-bottom:12px}
+.ps-input{width:100%;font-size:14px;padding:10px 12px 10px 36px;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--txt)}
+.ps-input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 2px #bfdbfe}
+.ps-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--txt3);font-size:15px;pointer-events:none}
+.ps-drop{position:absolute;top:calc(100% + 3px);left:0;right:0;z-index:600;background:var(--bg);border:1px solid var(--border2);border-radius:var(--radius);padding:3px 0;max-height:260px;overflow-y:auto;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.ps-item{padding:8px 12px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.ps-item:hover,.ps-item.active{background:var(--bg2)}
+.ps-item .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 /* Login */
 .login-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px 48px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,.07);max-width:380px;width:100%}
 .login-card h1{font-size:22px;font-weight:700;margin-bottom:6px}
 .login-card h1 span{color:var(--blue)}
 .login-card p{font-size:13px;color:var(--txt2);margin-bottom:28px}
-.g-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:11px 16px;font-size:13px;font-weight:500;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--txt);transition:box-shadow .15s,background .15s}
+.g-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:11px 16px;font-size:13px;font-weight:500;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--txt)}
 .g-btn:hover{background:var(--bg2);box-shadow:var(--shadow)}
-.g-btn:disabled{opacity:.5;cursor:not-allowed}
 .login-status{font-size:11px;color:var(--txt3);margin-top:12px;min-height:16px}
-@media print{
-  #login-screen{display:none!important}
-  header .header-right,.nav,.export-btn,.addb,.wx,.dr button{display:none!important}
-  .panel{box-shadow:none;border:none;padding:0}
-  body{background:#fff}
-}
+@media print{#login-screen{display:none!important}header .header-right,.nav,.export-btn,.addb,.wx{display:none!important}.panel{box-shadow:none;border:none}body{background:#fff}}
 </style>
 </head>
 <body>
@@ -118,167 +123,112 @@ header{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var
         <div class="sync-dot" id="sync-dot"></div>
         <span style="font-size:11px;color:var(--txt3)" id="sync-label">Guardado</span>
       </div>
-      <div class="user-chip" id="user-chip">
-        <img id="user-avatar" src="" alt="">
-        <span id="user-name"></span>
-      </div>
-      <button class="nb" onclick="signOut()" style="font-size:11px;padding:5px 10px">
-        <i class="ti ti-logout"></i> Salir
-      </button>
+      <div class="user-chip"><img id="user-avatar" src="" alt=""><span id="user-name"></span></div>
+      <button class="nb" onclick="signOut()" style="font-size:11px;padding:5px 10px"><i class="ti ti-logout"></i> Salir</button>
     </div>
   </header>
   <div id="root"></div>
 </div>
 
 <script>
-// ══════════════════════════════════════════
-// CONFIG — reemplaza con tu CLIENT_ID
-// ══════════════════════════════════════════
-const CLIENT_ID = '973564127080-45dujp61hm8kj5vijqn3nalou335a84f.apps.googleusercontent.com';
+// ══ CONFIG ══
+const CLIENT_ID = '973564127080-45dujp61hm8kj5vljqn3nalou335a84f.apps.googleusercontent.com';
 const SCOPES = 'https://www.googleapis.com/auth/drive.file profile email';
 const FILE_NAME = 'elohim-data.json';
 const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest';
 
-// ══════════════════════════════════════════
-// ESTADO DE AUTH
-// ══════════════════════════════════════════
-let tokenClient = null;
-let gapiInited = false;
-let gisInited = false;
-let driveFileId = null;
-let saveTimer = null;
+// ══ AUTH ══
+let tokenClient=null,gapiInited=false,gisInited=false,driveFileId=null,saveTimer=null;
 
-function setStatus(msg) {
-  const el = document.getElementById('login-status');
-  if (el) el.textContent = msg;
-}
+function setStatus(m){const e=document.getElementById('login-status');if(e)e.textContent=m;}
 
-// Se llama cuando gapi.js termina de cargar
-async function gapiLoaded() {
-  await gapi.client.init({ discoveryDocs: [DISCOVERY_DOC] });
-  gapiInited = true;
+async function gapiLoaded(){
+  await gapi.client.init({discoveryDocs:[DISCOVERY_DOC]});
+  gapiInited=true;
   setStatus('Listo — puedes iniciar sesión');
-  document.getElementById('sign-in-btn').disabled = false;
 }
-
-// Se llama cuando gsi/client termina de cargar
-function gisLoaded() {
-  tokenClient = google.accounts.oauth2.initTokenClient({
-    client_id: CLIENT_ID,
-    scope: SCOPES,
-    callback: async (resp) => {
-      if (resp.error) {
-        setStatus('Error: ' + resp.error);
-        return;
-      }
-      await afterSignIn();
-    }
+function gisLoaded(){
+  tokenClient=google.accounts.oauth2.initTokenClient({
+    client_id:CLIENT_ID,scope:SCOPES,
+    callback:async(r)=>{if(r.error){setStatus('Error: '+r.error);return;}await afterSignIn();}
   });
-  gisInited = true;
+  gisInited=true;
 }
-
-function handleSignIn() {
-  if (!gapiInited || !gisInited) {
-    setStatus('Todavía cargando APIs, espera un momento…');
-    return;
-  }
-  const token = gapi.client.getToken();
-  tokenClient.requestAccessToken({ prompt: token ? '' : 'consent' });
+function handleSignIn(){
+  if(!gapiInited||!gisInited){setStatus('Espera un momento…');return;}
+  tokenClient.requestAccessToken({prompt:gapi.client.getToken()?'':'consent'});
 }
-
-async function afterSignIn() {
-  try {
-    const resp = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-      headers: { Authorization: 'Bearer ' + gapi.client.getToken().access_token }
-    });
-    const info = await resp.json();
-    document.getElementById('user-name').textContent = info.name || info.email;
-    const av = document.getElementById('user-avatar');
-    if (info.picture) av.src = info.picture; else av.style.display = 'none';
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-    await loadFromDrive();
-  } catch(e) {
-    setStatus('Error al obtener perfil: ' + e.message);
-  }
+async function afterSignIn(){
+  const r=await fetch('https://www.googleapis.com/oauth2/v3/userinfo',{headers:{Authorization:'Bearer '+gapi.client.getToken().access_token}});
+  const info=await r.json();
+  document.getElementById('user-name').textContent=info.name||info.email;
+  const av=document.getElementById('user-avatar');
+  if(info.picture)av.src=info.picture;else av.style.display='none';
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('app').style.display='block';
+  await loadFromDrive();
 }
-
-function signOut() {
-  const token = gapi.client.getToken();
-  if (token) google.accounts.oauth2.revoke(token.access_token, () => {});
-  gapi.client.setToken('');
-  driveFileId = null;
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('app').style.display = 'none';
+function signOut(){
+  const t=gapi.client.getToken();
+  if(t)google.accounts.oauth2.revoke(t.access_token,()=>{});
+  gapi.client.setToken('');driveFileId=null;
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('app').style.display='none';
   setStatus('Listo — puedes iniciar sesión');
 }
 
-// ══════════════════════════════════════════
-// DRIVE
-// ══════════════════════════════════════════
-async function findOrCreateFile() {
-  const res = await gapi.client.drive.files.list({
-    q: `name='${FILE_NAME}' and trashed=false`,
-    fields: 'files(id)',
-    spaces: 'drive'
-  });
-  if (res.result.files.length) {
-    driveFileId = res.result.files[0].id;
-    return false;
-  }
-  const cr = await gapi.client.drive.files.create({ resource: { name: FILE_NAME, mimeType: 'application/json' }, fields: 'id' });
-  driveFileId = cr.result.id;
-  return true;
+// ══ DRIVE ══
+async function findOrCreateFile(){
+  const res=await gapi.client.drive.files.list({q:`name='${FILE_NAME}' and trashed=false`,fields:'files(id)',spaces:'drive'});
+  if(res.result.files.length){driveFileId=res.result.files[0].id;return false;}
+  const cr=await gapi.client.drive.files.create({resource:{name:FILE_NAME,mimeType:'application/json'},fields:'id'});
+  driveFileId=cr.result.id;return true;
 }
-
-async function loadFromDrive() {
-  setSyncState('saving', 'Cargando…');
-  const isNew = await findOrCreateFile();
-  if (!isNew) {
-    try {
-      const r = await fetch(`https://www.googleapis.com/drive/v3/files/${driveFileId}?alt=media`, {
-        headers: { Authorization: 'Bearer ' + gapi.client.getToken().access_token }
-      });
-      if (r.ok) deserialize(await r.json());
-    } catch(e) { console.warn('No se pudo leer Drive:', e); }
+async function loadFromDrive(){
+  setSyncState('saving','Cargando…');
+  const isNew=await findOrCreateFile();
+  if(!isNew){
+    try{
+      const r=await fetch(`https://www.googleapis.com/drive/v3/files/${driveFileId}?alt=media`,{headers:{Authorization:'Bearer '+gapi.client.getToken().access_token}});
+      if(r.ok)deserialize(await r.json());
+    }catch(e){console.warn(e);}
   }
-  setSyncState('ok', 'Guardado');
-  render();
+  setSyncState('ok','Guardado');render();
 }
-
-async function saveToDrive() {
-  if (!driveFileId) return;
-  setSyncState('saving', 'Guardando…');
-  try {
-    await fetch(`https://www.googleapis.com/upload/drive/v3/files/${driveFileId}?uploadType=media`, {
-      method: 'PATCH',
-      headers: { Authorization: 'Bearer ' + gapi.client.getToken().access_token, 'Content-Type': 'application/json' },
-      body: JSON.stringify(serialize())
+async function saveToDrive(){
+  if(!driveFileId)return;
+  setSyncState('saving','Guardando…');
+  try{
+    await fetch(`https://www.googleapis.com/upload/drive/v3/files/${driveFileId}?uploadType=media`,{
+      method:'PATCH',
+      headers:{Authorization:'Bearer '+gapi.client.getToken().access_token,'Content-Type':'application/json'},
+      body:JSON.stringify(serialize())
     });
-    setSyncState('ok', 'Guardado');
-  } catch(e) { setSyncState('error', 'Error al guardar'); }
+    setSyncState('ok','Guardado');
+  }catch(e){setSyncState('error','Error al guardar');}
+}
+function scheduleSave(){clearTimeout(saveTimer);saveTimer=setTimeout(saveToDrive,1800);}
+function setSyncState(s,l){
+  const d=document.getElementById('sync-dot'),lb=document.getElementById('sync-label');
+  if(!d)return;
+  d.className='sync-dot'+(s==='saving'?' saving':s==='error'?' error':'');
+  if(lb)lb.textContent=l;
 }
 
-function scheduleSave() { clearTimeout(saveTimer); saveTimer = setTimeout(saveToDrive, 1800); }
+// ══ DATOS ══
+const CARGOS=['Supervisor de Proyectos','Maestro Eléctrico','Ayudante Climatización','Maestro Ductero','Maestro Soldador'];
+const PC=['#378ADD','#1D9E75','#D85A30','#7F77DD','#BA7517','#D4537E','#639922','#5DCAA5','#F0997B','#AFA9EC','#9FE1CB','#97C459','#888780','#D3D1C7'];
+const SN={'0 Especial':'Especial','1 Adjudicado':'Adjudicado','2 Preparacion':'Preparación','3 Ejecucion':'Ejecución'};
+const SC={'0 Especial':'s0','1 Adjudicado':'s1','2 Preparacion':'s2','3 Ejecucion':'s3'};
+const HOY=new Date();HOY.setHours(0,0,0,0);
 
-function setSyncState(state, label) {
-  const dot = document.getElementById('sync-dot');
-  const lbl = document.getElementById('sync-label');
-  if (!dot) return;
-  dot.className = 'sync-dot' + (state==='saving'?' saving':state==='error'?' error':'');
-  if (lbl) lbl.textContent = label;
-}
+// Proyectos especiales fijos (no editables)
+const SPECIAL_PROJS=[
+  {id:'ESP-TAL',name:'Taller',estado:'0 Especial',cliente:'',color:'#888780',special:true},
+  {id:'ESP-VAC',name:'Vacaciones / Permiso',estado:'0 Especial',cliente:'',color:'#7F77DD',special:true},
+].map(p=>({...p,sd:null,ed:null,sem:null,req:new Set()}));
 
-// ══════════════════════════════════════════
-// DATOS
-// ══════════════════════════════════════════
-const CARGOS = ['Supervisor de Proyectos','Maestro Eléctrico','Ayudante Climatización','Maestro Ductero','Maestro Soldador'];
-const PC = ['#378ADD','#1D9E75','#D85A30','#7F77DD','#BA7517','#D4537E','#639922','#5DCAA5','#F0997B','#AFA9EC','#9FE1CB','#97C459','#888780','#D3D1C7'];
-const SN = {'1 Adjudicado':'Adjudicado','2 Preparacion':'Preparación','3 Ejecucion':'Ejecución'};
-const SC = {'1 Adjudicado':'s1','2 Preparacion':'s2','3 Ejecucion':'s3'};
-const HOY = new Date(); HOY.setHours(0,0,0,0);
-
-let PROJS = [
+let PROJS=[
   {id:'2026-001',name:'ACHS Puerto Montt',estado:'1 Adjudicado',cliente:'DLB'},
   {id:'2026-005',name:'Jumbo Concha y Toro',estado:'1 Adjudicado',cliente:'SAEG'},
   {id:'2026-007',name:'Jumbo Puerto Montt',estado:'1 Adjudicado',cliente:'SAEG'},
@@ -293,9 +243,12 @@ let PROJS = [
   {id:'2026-016',name:'Jumbo Los Trapenses',estado:'1 Adjudicado',cliente:''},
   {id:'2026-017',name:'Edificio La Concepción',estado:'1 Adjudicado',cliente:''},
   {id:'2026-018',name:'Jumbo Lo Castillo',estado:'1 Adjudicado',cliente:''},
-].map((p,i) => ({...p, color:PC[i%PC.length], sd:null, ed:null, sem:null, req:new Set(CARGOS)}));
+].map((p,i)=>({...p,color:PC[i%PC.length],sd:null,ed:null,sem:null,req:new Set(CARGOS)}));
 
-let WRK = [
+// Todos los proyectos (normales + especiales)
+const allProjs=()=>[...SPECIAL_PROJS,...PROJS];
+
+let WRK=[
   {id:1,name:'José González Orellana',cargo:'Supervisor de Proyectos'},
   {id:2,name:'Carlo Cofre Ramírez',cargo:'Supervisor de Proyectos'},
   {id:3,name:'Ignacio Rojas San Lucas',cargo:'Supervisor de Proyectos'},
@@ -311,54 +264,59 @@ let WRK = [
   {id:13,name:'Rodrigo Zambrano',cargo:'Maestro Soldador'},
   {id:14,name:'Víctor Ramírez Salavarria',cargo:'Maestro Soldador'},
 ];
-let NID=15, ASG={}, PAGE='A', SEL=PROJS[0].id, DD=null, LC=null, FC='todos', GS='g';
-PROJS.forEach(p => { ASG[p.id] = {}; });
+let NID=15,ASG={},PAGE='A',SEL=PROJS[0].id,DD=null,LC=null,FC='todos',GS='g';
+let PS_QUERY='',PS_OPEN=false;
 
-function serialize() {
-  return {
-    projs: PROJS.map(p => ({...p, sd:p.sd?tid(p.sd):null, ed:p.ed?tid(p.ed):null, req:[...p.req]})),
-    wrk: WRK, nid: NID,
-    asg: Object.fromEntries(Object.entries(ASG).map(([k,v]) => [k,v]))
+// init ASG para todos los proyectos
+function initASG(){
+  allProjs().forEach(p=>{if(!ASG[p.id])ASG[p.id]={};});
+}
+initASG();
+
+function serialize(){
+  return{
+    projs:PROJS.map(p=>({...p,sd:p.sd?tid(p.sd):null,ed:p.ed?tid(p.ed):null,req:[...p.req]})),
+    wrk:WRK,nid:NID,
+    asg:Object.fromEntries(Object.entries(ASG).map(([k,v])=>[k,v]))
   };
 }
-function deserialize(data) {
-  if (!data || !data.projs) return;
-  PROJS = data.projs.map((p,i) => ({...p, sd:p.sd?pdate(p.sd):null, ed:p.ed?pdate(p.ed):null, req:new Set(p.req||CARGOS), color:PC[i%PC.length]}));
-  WRK = data.wrk || WRK;
-  NID = data.nid || NID;
-  ASG = {};
-  PROJS.forEach(p => { ASG[p.id] = {}; });
-  Object.entries(data.asg||{}).forEach(([pid,cm]) => { if(!ASG[pid])ASG[pid]={}; Object.entries(cm||{}).forEach(([c,ids]) => { ASG[pid][c]=ids; }); });
-  SEL = PROJS[0].id;
+function deserialize(data){
+  if(!data||!data.projs)return;
+  PROJS=data.projs.map((p,i)=>({...p,sd:p.sd?pdate(p.sd):null,ed:p.ed?pdate(p.ed):null,req:new Set(p.req||CARGOS),color:PC[i%PC.length]}));
+  WRK=data.wrk||WRK;NID=data.nid||NID;
+  ASG={};initASG();
+  Object.entries(data.asg||{}).forEach(([pid,cm])=>{if(!ASG[pid])ASG[pid]={};Object.entries(cm||{}).forEach(([c,ids])=>{ASG[pid][c]=ids;});});
+  SEL=PROJS[0].id;
 }
 
-// ══════════════════════════════════════════
-// EXPORTAR
-// ══════════════════════════════════════════
-function exportExcel() {
-  const wb = XLSX.utils.book_new();
-  const r1 = [['Proyecto','ID','Estado','Cliente','Inicio','Término','Semanas','Personal']];
-  PROJS.forEach(p => r1.push([p.name,p.id,SN[p.estado]||p.estado,p.cliente||'',p.sd?fd(p.sd):'',p.ed?fd(p.ed):'',p.sem||'',pc(p.id)]));
-  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(r1), 'Proyectos');
-  CARGOS.forEach(cargo => {
-    const rows=[['Trabajador','Proyecto','Inicio','Término']];
-    WRK.filter(w=>w.cargo===cargo).forEach(w=>{const wa=wps(w.id);if(!wa.length)rows.push([w.name,'Sin asignar','','']);else wa.forEach(({proj:p2})=>rows.push([w.name,p2?`${p2.id} – ${p2.name}`:'',p2&&p2.sd?fd(p2.sd):'',p2&&p2.ed?fd(p2.ed):'']));});
-    XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(rows),cargo.substring(0,31));
-  });
-  const r2=[['Nombre','Cargo','Estado','Proyectos']];
-  WRK.forEach(w=>{const wa=wps(w.id);r2.push([w.name,w.cargo,wa.length?'Asignado':'Libre',wa.map(x=>x.proj?x.proj.id:'').join(', ')]);});
-  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(r2),'Pool');
-  XLSX.writeFile(wb,`Elohim-${tid(HOY)}.xlsx`);
-}
-function exportPDF(){ window.print(); }
-
-// ══════════════════════════════════════════
-// HELPERS
-// ══════════════════════════════════════════
-const gp=id=>PROJS.find(p=>p.id===id);
+// ══ HELPERS ══
+const gp=id=>allProjs().find(p=>p.id===id);
 const wps=wid=>{const r=[];for(const x in ASG)for(const c in ASG[x])if((ASG[x][c]||[]).includes(wid)){const p=gp(x);if(p)r.push({proj:p,cargo:c});}return r;};
 const pc=pid=>{let n=0;for(const c in(ASG[pid]||{}))n+=(ASG[pid][c]||[]).length;return n;};
-const ta=()=>{const s=new Set();for(const x in ASG)for(const c in ASG[x])(ASG[x][c]||[]).forEach(id=>s.add(id));return s.size;};
+
+// Solo cuenta trabajadores asignados a proyectos activos/futuros (no pasados)
+const ta=()=>{
+  const s=new Set();
+  for(const x in ASG){
+    const p=gp(x);
+    // especiales siempre cuentan; normales solo si no terminaron
+    const activo=p&&(p.special||!p.ed||p.ed>=HOY);
+    if(!activo)continue;
+    for(const c in ASG[x])(ASG[x][c]||[]).forEach(id=>s.add(id));
+  }
+  return s.size;
+};
+// Para pool: ¿está asignado a algo activo/futuro?
+const isActivelyAssigned=wid=>{
+  for(const x in ASG){
+    const p=gp(x);
+    const activo=p&&(p.special||!p.ed||p.ed>=HOY);
+    if(!activo)continue;
+    for(const c in ASG[x])if((ASG[x][c]||[]).includes(wid))return true;
+  }
+  return false;
+};
+
 function pdate(s){if(!s)return null;if(s.includes('-')){const p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}const p=s.split('/');return p.length===3?new Date(+p[2],+p[1]-1,+p[0]):null;}
 function tid(d){if(!d)return'';return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function aw(d,w){const r=new Date(d);r.setDate(r.getDate()+w*7);return r;}
@@ -366,29 +324,41 @@ function ddays(a,b){return Math.round((b-a)/86400000);}
 function fd(d){if(!d)return'—';return d.toLocaleDateString('es-CL',{day:'2-digit',month:'short',year:'numeric'});}
 function fs(d){if(!d)return'';return d.toLocaleDateString('es-CL',{day:'2-digit',month:'short'});}
 function ovlp(s1,e1,s2,e2){if(!s1||!e1||!s2||!e2)return false;return s1<=e2&&e1>=s2;}
-function gcf(wid,ppid){const p=gp(ppid);if(!p||!p.sd||!p.ed)return null;for(const x in ASG){if(x===ppid)continue;for(const c in ASG[x])if((ASG[x][c]||[]).includes(wid)){const op=gp(x);if(op&&ovlp(p.sd,p.ed,op.sd,op.ed))return op;}}return null;}
+function gcf(wid,ppid){const p=gp(ppid);if(!p||!p.sd||!p.ed)return null;for(const x in ASG){if(x===ppid)continue;for(const c in ASG[x])if((ASG[x][c]||[]).includes(wid)){const op=gp(x);if(op&&!op.special&&ovlp(p.sd,p.ed,op.sd,op.ed))return op;}}return null;}
 function ppct(d,vs,tot){return Math.max(0,Math.min(100,ddays(vs,d)/tot*100));}
 
-// ══════════════════════════════════════════
-// MUTACIONES
-// ══════════════════════════════════════════
-function setP(p){PAGE=p;DD=null;LC=null;render();}
-function selP(){const s=document.getElementById('ps');if(s){SEL=s.value;DD=null;LC=null;render();}}
+// ══ MUTACIONES ══
+function setP(p){PAGE=p;DD=null;LC=null;PS_OPEN=false;render();}
 function togDD(id){DD=DD===id?null:id;LC=null;render();}
 function togC(ppid,c){const p=gp(ppid);if(!p)return;p.req.has(c)?p.req.delete(c):p.req.add(c);scheduleSave();render();}
+
+// Fechas: solo actualizar al perder foco (blur)
 function onSt(ppid){const e=document.getElementById('si-'+ppid);if(!e)return;const p=gp(ppid);if(!p)return;p.sd=e.value?pdate(e.value):null;if(p.sd&&p.sem)p.ed=aw(p.sd,p.sem);else if(p.sd&&p.ed)p.sem=Math.round(ddays(p.sd,p.ed)/7);scheduleSave();render();}
 function onEd(ppid){const e=document.getElementById('ei-'+ppid);if(!e)return;const p=gp(ppid);if(!p)return;p.ed=e.value?pdate(e.value):null;if(p.sd&&p.ed)p.sem=Math.round(ddays(p.sd,p.ed)/7);scheduleSave();render();}
 function onSem(ppid){const e=document.getElementById('sm-'+ppid);if(!e)return;const p=gp(ppid);if(!p)return;const v=parseInt(e.value);p.sem=isNaN(v)||v<=0?null:v;if(p.sd&&p.sem)p.ed=aw(p.sd,p.sem);scheduleSave();render();}
-function asig(ppid,cargo,wid){const cf=gcf(wid,ppid);if(cf){LC={wid,pid:ppid,cargo,cf};DD=null;render();return;}if(!ASG[ppid][cargo])ASG[ppid][cargo]=[];if(!ASG[ppid][cargo].includes(wid))ASG[ppid][cargo].push(wid);LC=null;DD=null;scheduleSave();render();}
+
+function asig(ppid,cargo,wid){
+  const cf=gcf(wid,ppid);
+  if(cf){LC={wid,pid:ppid,cargo,cf};DD=null;render();return;}
+  if(!ASG[ppid][cargo])ASG[ppid][cargo]=[];
+  if(!ASG[ppid][cargo].includes(wid))ASG[ppid][cargo].push(wid);
+  LC=null;DD=null;scheduleSave();render();
+}
 function rem(ppid,cargo,wid){if(ASG[ppid][cargo])ASG[ppid][cargo]=ASG[ppid][cargo].filter(x=>x!==wid);LC=null;scheduleSave();render();}
 function addW(){const n=document.getElementById('nwn'),c=document.getElementById('nwc');if(n&&c&&n.value.trim()){WRK.push({id:NID++,name:n.value.trim(),cargo:c.value});n.value='';scheduleSave();render();}}
 function delW(id){if(wps(id).length)return;WRK=WRK.filter(w=>w.id!==id);scheduleSave();render();}
 function setGS(v){GS=v;render();}
 function setFC(v){FC=v;render();}
 
-// ══════════════════════════════════════════
-// VISTAS (igual que versión anterior)
-// ══════════════════════════════════════════
+// Buscador de proyectos
+function psInput(v){PS_QUERY=v;PS_OPEN=true;render();requestAnimationFrame(()=>{const i=document.getElementById('ps-input');if(i){i.focus();i.setSelectionRange(i.value.length,i.value.length);}});}
+function psSelect(id){SEL=id;PS_QUERY='';PS_OPEN=false;DD=null;LC=null;render();}
+function psFiltered(){
+  const q=PS_QUERY.toLowerCase();
+  return allProjs().filter(p=>!q||p.name.toLowerCase().includes(q)||p.id.toLowerCase().includes(q));
+}
+
+// ══ BAR ══
 function barHTML(p){
   const sd=p.sd,ed=p.ed;if(!sd)return'';
   const vs=new Date(Math.min(sd,HOY));vs.setDate(vs.getDate()-7);
@@ -400,56 +370,115 @@ function barHTML(p){
   return`<div style="margin-bottom:1rem"><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--txt2);margin-bottom:4px"><span>${fd(sd)} → ${fd(ed)}</span><span style="color:${noIn?'#1d4ed8':'#15803d'}">${info}</span></div><div style="height:26px;background:var(--bg2);border-radius:5px;position:relative;border:1px solid var(--border)"><div style="position:absolute;top:3px;height:20px;left:${sp}%;width:${bw}%;background:${p.color}33;border:1.5px solid ${p.color}88;border-radius:4px"></div><div style="position:absolute;top:0;bottom:0;left:${tp}%;width:2px;background:#dc2626;border-radius:1px"></div></div><div style="position:relative;height:16px;margin-top:3px">${tk}</div></div>`;
 }
 
+// ══ PÁGINA A ══
 function pageA(){
   const proj=gp(SEL);if(!proj)return'';
-  const pid=proj.id,mc=[...proj.req].filter(c=>!(ASG[pid][c]||[]).length),wc=pc(pid),fr=WRK.length-ta();
+  const pid=proj.id,isSpecial=proj.special||false;
+  const mc=isSpecial?[]:[...proj.req].filter(c=>!(ASG[pid][c]||[]).length);
+  const wc=pc(pid),fr=WRK.length-ta();
   let h=`<div class="panel">`;
-  h+=`<div style="margin-bottom:12px"><select id="ps" onchange="selP()" style="width:100%;font-size:14px;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--txt);cursor:pointer">`;
-  PROJS.forEach(p=>{h+=`<option value="${p.id}" ${p.id===SEL?'selected':''}>${p.id} — ${p.name} · ${p.sd?fs(p.sd):'sin fecha'} (${pc(p.id)} pers.)</option>`;});
-  h+=`</select></div>`;
-  h+=`<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px"><div style="width:12px;height:12px;border-radius:50%;background:${proj.color};flex-shrink:0"></div><span style="font-size:14px;font-weight:600">${proj.name}</span><span class="sb ${SC[proj.estado]||'s1'}">${SN[proj.estado]||proj.estado}</span>${proj.cliente?`<span style="font-size:12px;color:var(--txt2)">${proj.cliente}</span>`:''}</div>`;
-  h+=`<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px">
-    <span style="font-size:12px;color:var(--txt2)">Inicio</span>
-    <input type="date" id="si-${pid}" class="di2" value="${proj.sd?tid(proj.sd):''}" onchange="onSt('${pid}')">
-    <span style="color:var(--txt3)">→</span>
-    <span style="font-size:12px;color:var(--txt2)">Término</span>
-    <input type="date" id="ei-${pid}" class="di2" value="${proj.ed?tid(proj.ed):''}" onchange="onEd('${pid}')">
-    <span style="color:var(--txt3)">o</span>
-    <input type="number" id="sm-${pid}" class="di2" style="width:70px" min="1" max="104" value="${proj.sem||''}" placeholder="sem" oninput="onSem('${pid}')">
-    <span style="font-size:12px;color:var(--txt2)">semanas</span>
-    ${proj.sd&&proj.ed?`<span style="font-size:11px;color:var(--txt3)">${proj.sem} sem · ${ddays(proj.sd,proj.ed)} días</span>`:''}
-  </div>`;
-  if(!proj.sd||!proj.ed)h+=`<div class="al aw"><i class="ti ti-alert-circle"></i><span>Define inicio y término para detectar solapamientos.</span></div>`;
-  h+=barHTML(proj);
-  h+=`<div style="font-size:11px;font-weight:500;color:var(--txt2);margin-bottom:6px">Cargos requeridos</div><div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">`;
-  CARGOS.forEach(c=>{const on=proj.req.has(c);h+=`<div class="tc ${on?'on':''}" onclick="togC('${pid}','${c}')"><div class="ck">${on?'✓':''}</div><span>${c}</span></div>`;});
-  h+=`</div>`;
-  if(LC&&LC.pid===pid){const w=WRK.find(x=>x.id===LC.wid);h+=`<div class="al ae"><i class="ti ti-x"></i><span><strong>${w?w.name:'Trabajador'}</strong> tiene traslape con <strong>${LC.cf.name}</strong> (${fd(LC.cf.sd)} – ${fd(LC.cf.ed)})</span></div>`;}
-  else if(mc.length)h+=`<div class="al aw"><i class="ti ti-alert-circle"></i><span>Sin cubrir: <strong>${mc.join(', ')}</strong></span></div>`;
-  else if([...proj.req].length)h+=`<div class="al aok"><i class="ti ti-circle-check"></i><span>Todos los cargos requeridos cubiertos.</span></div>`;
-  h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px">
-    <div class="mc"><div class="ml">Asignados</div><div class="mv">${wc}</div></div>
-    <div class="mc"><div class="ml">Pool libre</div><div class="mv" style="color:${fr===0?'var(--red)':'var(--green)'}">${fr}</div></div>
-    <div class="mc"><div class="ml">Cargos pendientes</div><div class="mv" style="color:${mc.length?'var(--red)':'var(--green)'}">${mc.length}</div></div>
-  </div>`;
-  h+=`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px">`;
-  CARGOS.forEach(cargo=>{
-    const req=proj.req.has(cargo),caw=(ASG[pid][cargo]||[]);
-    const ct=!req?'background:var(--bg2);color:var(--txt3)':caw.length?'background:#dcfce7;color:#166534':'background:#fef2f2;color:#b91c1c';
-    h+=`<div class="cc ${req?'':'off'}"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font-size:11px;font-weight:600;color:${req?'var(--txt)':'var(--txt3)'}">${cargo}</span><span style="font-size:10px;padding:2px 7px;border-radius:8px;${ct}">${req?(caw.length||'0'):'—'}</span></div>`;
-    if(req){
-      caw.forEach(wid=>{const w=WRK.find(x=>x.id===wid);if(!w)return;h+=`<div class="wch"><div style="width:7px;height:7px;border-radius:50%;background:${proj.color};flex-shrink:0"></div><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${w.name}">${w.name}</span><span class="wx" onclick="rem('${pid}','${cargo}',${wid})">×</span></div>`;});
-      const ddi=`dd_${pid}_${cargo.replace(/\s+/g,'_')}`,iso=DD===ddi;
-      const av=WRK.filter(w=>w.cargo===cargo&&!(ASG[pid][cargo]||[]).includes(w.id));
-      h+=`<div class="dr"><button class="addb" onclick="togDD('${ddi}')"><i class="ti ti-plus"></i> agregar</button>`;
-      if(iso){h+=`<div class="dm">`;if(!av.length){h+=`<div class="dem">Sin disponibles</div>`;}else{av.forEach(w=>{const cf=gcf(w.id,pid),io=Object.keys(ASG).filter(x=>x!==pid).some(x=>Object.values(ASG[x]).flat().includes(w.id));if(cf)h+=`<div class="dcf"><i class="ti ti-alert-circle" style="font-size:12px;flex-shrink:0"></i><span>${w.name}</span><span style="margin-left:auto;font-size:10px">tope:${cf.id}</span></div>`;else h+=`<div class="di" onclick="asig('${pid}','${cargo}',${w.id})"><div style="width:7px;height:7px;border-radius:50%;background:${io?'#888':'var(--border2)'};flex-shrink:0"></div><span>${w.name}</span>${io&&(!proj.sd||!proj.ed)?`<span style="font-size:10px;color:var(--txt3);margin-left:auto">otro proy.</span>`:''}</div>`;}); }h+=`</div>`;}
-      h+=`</div>`;
-    }
+
+  // Buscador con dropdown
+  const selProj=gp(SEL);
+  const filtered=psFiltered();
+  h+=`<div class="ps-wrap">
+    <i class="ti ti-search ps-icon"></i>
+    <input id="ps-input" class="ps-input" placeholder="Buscar proyecto…" value="${PS_QUERY||''}"
+      oninput="psInput(this.value)"
+      onfocus="PS_OPEN=true;render();requestAnimationFrame(()=>{const i=document.getElementById('ps-input');if(i){i.focus();i.setSelectionRange(i.value.length,i.value.length);}})"
+      onkeydown="if(event.key==='Escape'){PS_QUERY='';PS_OPEN=false;render();}"
+    >`;
+  if(!PS_QUERY&&selProj){
+    h+=`<div style="position:absolute;left:36px;top:50%;transform:translateY(-50%);pointer-events:none;display:flex;align-items:center;gap:7px;font-size:14px;color:var(--txt)">
+      <div style="width:9px;height:9px;border-radius:50%;background:${selProj.color}"></div>
+      <span style="font-weight:500">${selProj.id} — ${selProj.name}</span>
+      <span class="sb ${SC[selProj.estado]||'s1'}">${SN[selProj.estado]||selProj.estado}</span>
+    </div>`;}
+  if(PS_OPEN){
+    h+=`<div class="ps-drop">`;
+    if(!filtered.length)h+=`<div class="dem">Sin resultados</div>`;
+    else filtered.forEach(p=>{
+      h+=`<div class="ps-item ${p.id===SEL?'active':''}" onmousedown="psSelect('${p.id}')">
+        <div class="dot" style="background:${p.color}"></div>
+        <span style="font-weight:500;color:var(--txt2);font-size:11px">${p.id}</span>
+        <span style="flex:1">${p.name}</span>
+        <span class="sb ${SC[p.estado]||'s1'}">${SN[p.estado]||p.estado}</span>
+      </div>`;
+    });
     h+=`</div>`;
-  });
+  }
+  h+=`</div>`;
+
+  // Info proyecto
+  h+=`<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px">
+    <div style="width:12px;height:12px;border-radius:50%;background:${proj.color};flex-shrink:0"></div>
+    <span style="font-size:14px;font-weight:600">${proj.name}</span>
+    <span class="sb ${SC[proj.estado]||'s1'}">${SN[proj.estado]||proj.estado}</span>
+    ${proj.cliente?`<span style="font-size:12px;color:var(--txt2)">${proj.cliente}</span>`:''}
+    ${isSpecial?`<span style="font-size:11px;color:var(--txt3)">Proyecto especial — sin fechas ni cargos requeridos</span>`:''}
+  </div>`;
+
+  if(!isSpecial){
+    h+=`<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px">
+      <span style="font-size:12px;color:var(--txt2)">Inicio</span>
+      <input type="date" id="si-${pid}" class="di2" value="${proj.sd?tid(proj.sd):''}" onchange="onSt('${pid}')">
+      <span style="color:var(--txt3)">→</span>
+      <span style="font-size:12px;color:var(--txt2)">Término</span>
+      <input type="date" id="ei-${pid}" class="di2" value="${proj.ed?tid(proj.ed):''}" onchange="onEd('${pid}')">
+      <span style="color:var(--txt3)">o</span>
+      <input type="number" id="sm-${pid}" class="di2" style="width:70px" min="1" max="104" value="${proj.sem||''}" placeholder="sem" onblur="onSem('${pid}')">
+      <span style="font-size:12px;color:var(--txt2)">semanas</span>
+      ${proj.sd&&proj.ed?`<span style="font-size:11px;color:var(--txt3)">${proj.sem} sem · ${ddays(proj.sd,proj.ed)} días</span>`:''}
+    </div>`;
+    if(!proj.sd||!proj.ed)h+=`<div class="al aw"><i class="ti ti-alert-circle"></i><span>Define inicio y término para detectar solapamientos.</span></div>`;
+    h+=barHTML(proj);
+    h+=`<div style="font-size:11px;font-weight:500;color:var(--txt2);margin-bottom:6px">Cargos requeridos</div><div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">`;
+    CARGOS.forEach(c=>{const on=proj.req.has(c);h+=`<div class="tc ${on?'on':''}" onclick="togC('${pid}','${c}')"><div class="ck">${on?'✓':''}</div><span>${c}</span></div>`;});
+    h+=`</div>`;
+    if(LC&&LC.pid===pid){const w=WRK.find(x=>x.id===LC.wid);h+=`<div class="al ae"><i class="ti ti-x"></i><span><strong>${w?w.name:'Trabajador'}</strong> tiene traslape con <strong>${LC.cf.name}</strong> (${fd(LC.cf.sd)} – ${fd(LC.cf.ed)})</span></div>`;}
+    else if(mc.length)h+=`<div class="al aw"><i class="ti ti-alert-circle"></i><span>Sin cubrir: <strong>${mc.join(', ')}</strong></span></div>`;
+    else if([...proj.req].length)h+=`<div class="al aok"><i class="ti ti-circle-check"></i><span>Todos los cargos requeridos cubiertos.</span></div>`;
+  }
+
+  h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px">
+    <div class="mc"><div class="ml">Asignados al proyecto</div><div class="mv">${wc}</div></div>
+    <div class="mc"><div class="ml">Pool libre</div><div class="mv" style="color:${fr===0?'var(--red)':'var(--green)'}">${fr}</div></div>
+    ${!isSpecial?`<div class="mc"><div class="ml">Cargos pendientes</div><div class="mv" style="color:${mc.length?'var(--red)':'var(--green)'}">${mc.length}</div></div>`:'<div class="mc"><div class="ml">Total pool</div><div class="mv">${WRK.length}</div></div>'}
+  </div>`;
+
+  // Cargos
+  const cargosAMostrar=isSpecial?['Todos']:CARGOS;
+  h+=`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px">`;
+  if(isSpecial){
+    // Para especiales: un solo bloque con todos los trabajadores
+    h+=`<div class="cc" style="grid-column:1/-1"><div style="font-size:11px;font-weight:600;margin-bottom:8px">Trabajadores asignados</div>`;
+    const todos=Object.values(ASG[pid]||{}).flat();
+    todos.forEach(wid=>{const w=WRK.find(x=>x.id===wid);if(!w)return;h+=`<div class="wch"><div style="width:7px;height:7px;border-radius:50%;background:${proj.color};flex-shrink:0"></div><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${w.name}</span><span style="font-size:10px;color:var(--txt3)">${w.cargo}</span><span class="wx" onclick="rem('${pid}','${w.cargo}',${wid})">×</span></div>`;});
+    const ddi=`dd_${pid}_esp`,iso=DD===ddi;
+    const av=WRK.filter(w=>!todos.includes(w.id));
+    h+=`<div class="dr"><button class="addb" onclick="togDD('${ddi}')"><i class="ti ti-plus"></i> agregar</button>`;
+    if(iso){h+=`<div class="dm">`;if(!av.length)h+=`<div class="dem">Sin trabajadores disponibles</div>`;else av.forEach(w=>{h+=`<div class="di" onclick="asig('${pid}','${w.cargo}',${w.id})"><div style="width:7px;height:7px;border-radius:50%;background:var(--border2);flex-shrink:0"></div><span>${w.name}</span><span style="font-size:10px;color:var(--txt3);margin-left:auto">${w.cargo}</span></div>`;});h+=`</div>`;}
+    h+=`</div></div>`;
+  } else {
+    CARGOS.forEach(cargo=>{
+      const req=proj.req.has(cargo),caw=(ASG[pid][cargo]||[]);
+      const ct=!req?'background:var(--bg2);color:var(--txt3)':caw.length?'background:#dcfce7;color:#166534':'background:#fef2f2;color:#b91c1c';
+      h+=`<div class="cc ${req?'':'off'}"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font-size:11px;font-weight:600;color:${req?'var(--txt)':'var(--txt3)'}">${cargo}</span><span style="font-size:10px;padding:2px 7px;border-radius:8px;${ct}">${req?(caw.length||'0'):'—'}</span></div>`;
+      if(req){
+        caw.forEach(wid=>{const w=WRK.find(x=>x.id===wid);if(!w)return;h+=`<div class="wch"><div style="width:7px;height:7px;border-radius:50%;background:${proj.color};flex-shrink:0"></div><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${w.name}">${w.name}</span><span class="wx" onclick="rem('${pid}','${cargo}',${wid})">×</span></div>`;});
+        const ddi=`dd_${pid}_${cargo.replace(/\s+/g,'_')}`,iso=DD===ddi;
+        const av=WRK.filter(w=>w.cargo===cargo&&!(ASG[pid][cargo]||[]).includes(w.id));
+        h+=`<div class="dr"><button class="addb" onclick="togDD('${ddi}')"><i class="ti ti-plus"></i> agregar</button>`;
+        if(iso){h+=`<div class="dm">`;if(!av.length)h+=`<div class="dem">Sin disponibles</div>`;else av.forEach(w=>{const cf=gcf(w.id,pid),io=Object.keys(ASG).filter(x=>x!==pid).some(x=>Object.values(ASG[x]).flat().includes(w.id));if(cf)h+=`<div class="dcf"><i class="ti ti-alert-circle" style="font-size:12px;flex-shrink:0"></i><span>${w.name}</span><span style="margin-left:auto;font-size:10px">tope:${cf.id}</span></div>`;else h+=`<div class="di" onclick="asig('${pid}','${cargo}',${w.id})"><div style="width:7px;height:7px;border-radius:50%;background:${io?'#888':'var(--border2)'};flex-shrink:0"></div><span>${w.name}</span>${io&&(!proj.sd||!proj.ed)?`<span style="font-size:10px;color:var(--txt3);margin-left:auto">otro proy.</span>`:''}</div>`;});h+=`</div>`;}
+        h+=`</div>`;
+      }
+      h+=`</div>`;
+    });
+  }
   h+=`</div></div>`;return h;
 }
 
+// ══ PÁGINA D ══
 function pageD(){
   const fr=WRK.length-ta();
   let h=`<div class="panel"><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px">
@@ -473,59 +502,140 @@ function pageD(){
   h+=`</div>`;return h;
 }
 
+// ══ GANTT — ancho completo con nombres ══
 function ganttSVG(){
   const fw=FC==='todos'?WRK:WRK.filter(w=>w.cargo===FC);
   const pk=PROJS.filter(p=>p.sd&&p.ed);
-  if(!pk.length||!fw.some(w=>wps(w.id).length))return`<div style="padding:2.5rem;text-align:center;font-size:13px;color:var(--txt3);background:var(--bg2);border-radius:var(--radius)">Asigna trabajadores a proyectos con fechas para ver la carta Gantt.</div>`;
+  if(!pk.length||!fw.some(w=>wps(w.id).length))
+    return`<div style="padding:2.5rem;text-align:center;font-size:13px;color:var(--txt3);background:var(--bg2);border-radius:var(--radius)">Asigna trabajadores a proyectos con fechas para ver la carta Gantt.</div>`;
+
   const allD=[...pk.map(p=>p.sd),...pk.map(p=>p.ed),HOY];
   const vs=new Date(Math.min(...allD));vs.setDate(vs.getDate()-7);
   const ve=new Date(Math.max(...allD));ve.setDate(ve.getDate()+14);
-  const tot=ddays(vs,ve)||1,LW=162,RH=28,GH=18,HH=32,BW=450;
-  const st=[];CARGOS.forEach(c=>{const g=fw.filter(w=>w.cargo===c);if(g.length){st.push({t:'g',c});g.forEach(w=>st.push({t:'w',w}));}});
-  const TH=HH+st.reduce((s,r)=>s+(r.t==='g'?GH:RH),0)+8;
-  let rows='',y=HH,ri=0;
-  st.forEach(item=>{
-    if(item.t==='g'){rows+=`<rect x="0" y="${y}" width="${LW+BW}" height="${GH}" fill="#f5f5f4"/><text x="${LW-5}" y="${y+GH/2+4}" text-anchor="end" font-size="10" font-weight="600" fill="#78716c">${item.c}</text>`;y+=GH;}
-    else{const w=item.w,wa=wps(w.id);if(ri%2===0)rows+=`<rect x="0" y="${y}" width="${LW+BW}" height="${RH}" fill="#fafaf9" opacity="0.6"/>`;rows+=`<text x="${LW-5}" y="${y+RH/2+4}" text-anchor="end" font-size="11" fill="#1c1917">${w.name}</text>`;
-      if(!wa.length){rows+=`<rect x="${LW+4}" y="${y+7}" width="${BW-8}" height="${RH-14}" rx="3" fill="none" stroke="#e5e5e4" stroke-width="1" stroke-dasharray="4,3"/><text x="${LW+BW/2}" y="${y+RH/2+4}" text-anchor="middle" font-size="10" fill="#a8a29e">disponible</text>`;}
-      else wa.forEach(({proj:p2})=>{if(!p2||!p2.sd||!p2.ed)return;const sp=ppct(p2.sd,vs,tot),ep=ppct(p2.ed,vs,tot),bw2=Math.max(1,ep-sp),bx=LW+sp/100*BW,bwp=bw2/100*BW;rows+=`<rect x="${bx}" y="${y+4}" width="${bwp}" height="${RH-8}" rx="3" fill="${p2.color}33" stroke="${p2.color}" stroke-width="1.5"/>`;if(bwp>48)rows+=`<text x="${bx+bwp/2}" y="${y+RH/2+4}" text-anchor="middle" font-size="10" font-weight="600" fill="${p2.color}">${p2.id}</text>`;});
-      y+=RH;ri++;}
+  const tot=ddays(vs,ve)||1;
+
+  // Ancho dinámico según contenedor
+  const LW=180; // columna de nombres
+  const RH=30,GH=20,HH=36;
+
+  const st=[];
+  CARGOS.forEach(c=>{
+    const g=fw.filter(w=>w.cargo===c);
+    if(g.length){st.push({t:'g',c});g.forEach(w=>st.push({t:'w',w}));}
   });
+  const TH=HH+st.reduce((s,r)=>s+(r.t==='g'?GH:RH),0)+8;
+
+  // SVG responsive: usamos viewBox con ancho fijo 900 para que escale
+  const VW=900,BW=VW-LW;
+  let rows='',y=HH,ri=0;
+
+  st.forEach(item=>{
+    if(item.t==='g'){
+      rows+=`<rect x="0" y="${y}" width="${VW}" height="${GH}" fill="#f0f0ef"/>`;
+      rows+=`<text x="${LW-8}" y="${y+GH/2+1}" text-anchor="end" dominant-baseline="central" font-size="10" font-weight="600" fill="#78716c" font-family="system-ui,sans-serif">${item.c}</text>`;
+      y+=GH;
+    } else {
+      const w=item.w,wa=wps(w.id).filter(x=>x.proj&&!x.proj.special);
+      if(ri%2===0)rows+=`<rect x="0" y="${y}" width="${VW}" height="${RH}" fill="#fafaf9"/>`;
+      // Nombre del trabajador
+      rows+=`<text x="${LW-8}" y="${y+RH/2}" text-anchor="end" dominant-baseline="central" font-size="11.5" fill="#1c1917" font-family="system-ui,sans-serif">${w.name}</text>`;
+      if(!wa.length){
+        rows+=`<rect x="${LW+4}" y="${y+6}" width="${BW-8}" height="${RH-12}" rx="3" fill="none" stroke="#e5e5e4" stroke-width="1" stroke-dasharray="4,3"/>`;
+        rows+=`<text x="${LW+BW/2}" y="${y+RH/2}" text-anchor="middle" dominant-baseline="central" font-size="10" fill="#a8a29e" font-family="system-ui,sans-serif">disponible</text>`;
+      } else {
+        wa.forEach(({proj:p2})=>{
+          if(!p2||!p2.sd||!p2.ed)return;
+          const sp=ppct(p2.sd,vs,tot),ep=ppct(p2.ed,vs,tot);
+          const bwp=Math.max(2,(ep-sp)/100*BW),bx=LW+sp/100*BW;
+          rows+=`<rect x="${bx}" y="${y+4}" width="${bwp}" height="${RH-8}" rx="3" fill="${p2.color}33" stroke="${p2.color}" stroke-width="1.5"/>`;
+          if(bwp>60)rows+=`<text x="${bx+bwp/2}" y="${y+RH/2}" text-anchor="middle" dominant-baseline="central" font-size="10" font-weight="600" fill="${p2.color}" font-family="system-ui,sans-serif">${p2.id}</text>`;
+        });
+      }
+      y+=RH;ri++;
+    }
+  });
+
+  // Línea hoy + ticks
   const tp=ppct(HOY,vs,tot),tx=LW+tp/100*BW;
-  let tks='';for(let i=0;i<=5;i++){const d=new Date(vs.getTime()+(ve-vs)*i/5),x=LW+i/5*BW;tks+=`<line x1="${x}" y1="${HH-12}" x2="${x}" y2="${TH}" stroke="#e5e5e4" stroke-width="0.5"/><text x="${x}" y="${HH-16}" text-anchor="middle" font-size="10" fill="#a8a29e">${d.toLocaleDateString('es-CL',{day:'2-digit',month:'short'})}</text>`;}
-  tks+=`<line x1="${tx}" y1="0" x2="${tx}" y2="${TH}" stroke="#dc2626" stroke-width="1.5"/><text x="${tx}" y="12" text-anchor="middle" font-size="10" font-weight="600" fill="#dc2626">hoy</text>`;
-  tks+=`<rect x="0" y="0" width="${LW}" height="${TH}" fill="#ffffff"/><line x1="${LW}" y1="0" x2="${LW}" y2="${TH}" stroke="#e5e5e4" stroke-width="0.5"/>`;
-  const lp=[...new Set(WRK.flatMap(w=>wps(w.id).map(x=>x.proj.id)))].map(id=>gp(id)).filter(Boolean);
-  let leg='';if(lp.length){leg=`<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;padding:10px 12px;background:var(--bg2);border-radius:var(--radius)">`;lp.forEach(p=>leg+=`<div style="display:inline-flex;align-items:center;gap:5px;font-size:11px"><div style="width:10px;height:10px;border-radius:3px;background:${p.color}33;border:1.5px solid ${p.color}"></div>${p.id} — ${p.name}</div>`);leg+=`</div>`;}
-  return`<div style="overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-lg)"><svg width="${LW+BW}" height="${TH}" style="min-width:${LW+BW}px;display:block">${rows}${tks}</svg></div>${leg}`;
+  let tks='';
+  for(let i=0;i<=6;i++){
+    const d=new Date(vs.getTime()+(ve-vs)*i/6),x=LW+i/6*BW;
+    tks+=`<line x1="${x}" y1="${HH-14}" x2="${x}" y2="${TH}" stroke="#e5e5e4" stroke-width="0.5"/>`;
+    tks+=`<text x="${x}" y="${HH-18}" text-anchor="middle" font-size="10" fill="#a8a29e" font-family="system-ui,sans-serif">${d.toLocaleDateString('es-CL',{day:'2-digit',month:'short'})}</text>`;
+  }
+  tks+=`<line x1="${tx}" y1="0" x2="${tx}" y2="${TH}" stroke="#dc2626" stroke-width="1.5"/>`;
+  tks+=`<text x="${tx}" y="13" text-anchor="middle" font-size="10" font-weight="600" fill="#dc2626" font-family="system-ui,sans-serif">hoy</text>`;
+  // Fondo columna nombres (encima de barras)
+  tks+=`<rect x="0" y="0" width="${LW}" height="${TH}" fill="#ffffff"/>`;
+  tks+=`<line x1="${LW}" y1="0" x2="${LW}" y2="${TH}" stroke="#e5e5e4" stroke-width="0.5"/>`;
+
+  const lp=[...new Set(WRK.flatMap(w=>wps(w.id).map(x=>x.proj&&!x.proj.special?x.proj.id:'').filter(Boolean)))].map(id=>gp(id)).filter(Boolean);
+  let leg='';
+  if(lp.length){
+    leg=`<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;padding:10px 12px;background:var(--bg2);border-radius:var(--radius)">`;
+    lp.forEach(p=>leg+=`<div style="display:inline-flex;align-items:center;gap:5px;font-size:11px"><div style="width:10px;height:10px;border-radius:3px;background:${p.color}33;border:1.5px solid ${p.color}"></div>${p.id} — ${p.name}</div>`);
+    leg+=`</div>`;
+  }
+  // SVG con width 100% y viewBox fijo → escala al ancho disponible
+  return`<div style="overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-lg)">
+    <svg width="100%" viewBox="0 0 ${VW} ${TH}" style="display:block;min-width:480px">${rows}${tks}</svg>
+  </div>${leg}`;
 }
 
 function tablaHTML(){
   const fw=FC==='todos'?WRK:WRK.filter(w=>w.cargo===FC);
-  let h=`<div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Trabajador</th><th>Cargo</th><th>Proyectos</th><th style="text-align:center">Estado</th></tr></thead><tbody>`;
-  fw.forEach(w=>{const wa=wps(w.id);h+=`<tr><td style="font-weight:500">${w.name}</td><td style="color:var(--txt2);font-size:11px">${w.cargo}</td><td>`;if(!wa.length)h+=`<span style="color:var(--txt3);font-size:11px">sin asignar</span>`;else wa.forEach(({proj:p2})=>{if(!p2)return;h+=`<span style="display:inline-flex;align-items:center;gap:3px;margin:1px;padding:2px 8px;border-radius:8px;background:${p2.color}22;border:1px solid ${p2.color}66;font-size:11px;color:${p2.color}"><strong>${p2.id}</strong> ${fs(p2.sd)}→${fs(p2.ed)}</span>`;});h+=`</td><td style="text-align:center"><span style="font-size:11px;padding:2px 9px;border-radius:8px;${wa.length?'background:#dbeafe;color:#1e40af':'background:#dcfce7;color:#166534'}">${wa.length?'Asignado':'Libre'}</span></td></tr>`;});
+  let h=`<div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Trabajador</th><th>Cargo</th><th>Proyectos activos</th><th style="text-align:center">Estado</th></tr></thead><tbody>`;
+  fw.forEach(w=>{
+    const wa=wps(w.id);
+    const activos=wa.filter(x=>x.proj&&(x.proj.special||!x.proj.ed||x.proj.ed>=HOY));
+    h+=`<tr><td style="font-weight:500">${w.name}</td><td style="color:var(--txt2);font-size:11px">${w.cargo}</td><td>`;
+    if(!activos.length)h+=`<span style="color:var(--txt3);font-size:11px">sin asignar</span>`;
+    else activos.forEach(({proj:p2})=>{if(!p2)return;h+=`<span style="display:inline-flex;align-items:center;gap:3px;margin:1px;padding:2px 8px;border-radius:8px;background:${p2.color}22;border:1px solid ${p2.color}66;font-size:11px;color:${p2.color}"><strong>${p2.id}</strong>${p2.special?'':` ${fs(p2.sd)}→${fs(p2.ed)}`}</span>`;});
+    const asignado=isActivelyAssigned(w.id);
+    h+=`</td><td style="text-align:center"><span style="font-size:11px;padding:2px 9px;border-radius:8px;${asignado?'background:#dbeafe;color:#1e40af':'background:#dcfce7;color:#166534'}">${asignado?'Asignado':'Libre'}</span></td></tr>`;
+  });
   h+=`</tbody></table></div>`;return h;
 }
 
+// ══ PÁGINA P ══
 function pageP(){
   let h=`<div class="panel">`;
   CARGOS.forEach(cargo=>{
     const g=WRK.filter(w=>w.cargo===cargo);
     h+=`<div style="font-size:11px;font-weight:600;color:var(--txt2);margin-bottom:5px;margin-top:12px">${cargo} (${g.length})</div><div style="display:flex;flex-wrap:wrap;margin-bottom:4px">`;
-    g.forEach(w=>{const wa=wps(w.id),b=wa.length>0,fp=b?wa[0].proj:null;h+=`<div class="pch ${b?'busy':''}">`;if(fp)h+=`<div style="width:7px;height:7px;border-radius:50%;background:${fp.color};flex-shrink:0"></div>`;h+=`<span>${w.name}</span>`;if(fp)h+=`<span style="font-size:10px;font-weight:600;color:${fp.color}">${fp.id}</span>`;h+=`</div>`;});
+    g.forEach(w=>{
+      const activo=isActivelyAssigned(w.id);
+      const wa=wps(w.id).filter(x=>x.proj&&(x.proj.special||!x.proj.ed||x.proj.ed>=HOY));
+      const fp=wa.length?wa[0].proj:null;
+      h+=`<div class="pch ${activo?'busy':''}">`;
+      if(fp)h+=`<div style="width:7px;height:7px;border-radius:50%;background:${fp.color};flex-shrink:0"></div>`;
+      h+=`<span>${w.name}</span>`;
+      if(fp)h+=`<span style="font-size:10px;font-weight:600;color:${fp.color}">${fp.id}</span>`;
+      h+=`</div>`;
+    });
     h+=`</div>`;
   });
-  h+=`<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px;margin-top:14px"><div style="font-size:13px;font-weight:600;margin-bottom:10px">Agregar trabajador</div>
+  h+=`<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px;margin-top:14px">
+    <div style="font-size:13px;font-weight:600;margin-bottom:10px">Agregar trabajador</div>
     <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px">
       <input type="text" id="nwn" placeholder="Nombre completo" class="di2" style="flex:1;min-width:140px">
       <select id="nwc" class="di2" style="flex:1;min-width:140px">${CARGOS.map(c=>`<option>${c}</option>`).join('')}</select>
       <button onclick="addW()" style="padding:6px 14px;font-size:12px;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--txt);display:flex;align-items:center;gap:5px"><i class="ti ti-plus"></i> Agregar</button>
     </div>
     <table class="tbl"><thead><tr><th>Nombre</th><th>Cargo</th><th style="text-align:center">Estado</th><th></th></tr></thead><tbody>`;
-  WRK.forEach(w=>{const wa=wps(w.id);h+=`<tr><td style="font-weight:500">${w.name}</td><td style="font-size:11px;color:var(--txt2)">${w.cargo}</td><td style="text-align:center"><span style="font-size:10px;padding:2px 8px;border-radius:8px;${wa.length?'background:#dbeafe;color:#1e40af':'background:#dcfce7;color:#166534'}">${wa.length?'Asignado':'Libre'}</span></td><td style="text-align:center">${!wa.length?`<span style="font-size:13px;color:var(--txt3);cursor:pointer" onclick="delW(${w.id})">×</span>`:''}</td></tr>`;});
+  WRK.forEach(w=>{
+    const activo=isActivelyAssigned(w.id);
+    h+=`<tr>
+      <td style="font-weight:500">${w.name}</td>
+      <td style="font-size:11px;color:var(--txt2)">${w.cargo}</td>
+      <td style="text-align:center"><span style="font-size:10px;padding:2px 8px;border-radius:8px;${activo?'background:#dbeafe;color:#1e40af':'background:#dcfce7;color:#166534'}">${activo?'Asignado':'Libre'}</span></td>
+      <td style="text-align:center">${!activo?`<span style="font-size:13px;color:var(--txt3);cursor:pointer" onclick="delW(${w.id})">×</span>`:''}</td>
+    </tr>`;
+  });
   h+=`</tbody></table></div></div>`;return h;
 }
 
+// ══ RENDER ══
 function render(){
   const ass=ta(),fr=WRK.length-ass;
   document.getElementById('root').innerHTML=`
@@ -534,7 +644,7 @@ function render(){
       <button class="nb ${PAGE==='D'?'on':''}" onclick="setP('D')"><i class="ti ti-chart-gantt"></i> Disponibilidad</button>
       <button class="nb ${PAGE==='P'?'on':''}" onclick="setP('P')"><i class="ti ti-users"></i> Pool</button>
       <div style="margin-left:auto;display:flex;align-items:center;gap:6px">
-        <span class="ctr"><span style="font-weight:600;color:var(--green)">${fr}</span> libres · <span style="font-weight:600;color:var(--blue)">${ass}</span> asignados</span>
+        <span style="font-size:11px;color:var(--txt2)"><span style="font-weight:600;color:var(--green)">${fr}</span> libres · <span style="font-weight:600;color:var(--blue)">${ass}</span> asignados</span>
         <button class="export-btn" onclick="exportExcel()"><i class="ti ti-file-spreadsheet"></i> Excel</button>
         <button class="export-btn" onclick="exportPDF()"><i class="ti ti-file-type-pdf"></i> PDF</button>
       </div>
@@ -542,15 +652,32 @@ function render(){
     ${PAGE==='A'?pageA():''}${PAGE==='D'?pageD():''}${PAGE==='P'?pageP():''}`;
 }
 
-document.addEventListener('click', e => { if(DD&&!e.target.closest('.dr')){DD=null;render();} });
+document.addEventListener('click',e=>{
+  if(DD&&!e.target.closest('.dr')){DD=null;render();return;}
+  if(PS_OPEN&&!e.target.closest('.ps-wrap')){PS_OPEN=false;render();}
+});
+
+// ══ EXPORTAR ══
+function exportExcel(){
+  const wb=XLSX.utils.book_new();
+  const r1=[['Proyecto','ID','Estado','Cliente','Inicio','Término','Semanas','Personal']];
+  PROJS.forEach(p=>r1.push([p.name,p.id,SN[p.estado]||p.estado,p.cliente||'',p.sd?fd(p.sd):'',p.ed?fd(p.ed):'',p.sem||'',pc(p.id)]));
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(r1),'Proyectos');
+  CARGOS.forEach(cargo=>{
+    const rows=[['Trabajador','Proyecto','Inicio','Término']];
+    WRK.filter(w=>w.cargo===cargo).forEach(w=>{const wa=wps(w.id);if(!wa.length)rows.push([w.name,'Sin asignar','','']);else wa.forEach(({proj:p2})=>rows.push([w.name,p2?`${p2.id} – ${p2.name}`:'',p2&&p2.sd?fd(p2.sd):'',p2&&p2.ed?fd(p2.ed):'']));});
+    XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(rows),cargo.substring(0,31));
+  });
+  const r2=[['Nombre','Cargo','Estado','Proyectos activos']];
+  WRK.forEach(w=>{const activo=isActivelyAssigned(w.id);const wa=wps(w.id).filter(x=>x.proj&&(x.proj.special||!x.proj.ed||x.proj.ed>=HOY));r2.push([w.name,w.cargo,activo?'Asignado':'Libre',wa.map(x=>x.proj?x.proj.id:'').join(', ')]);});
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(r2),'Pool');
+  XLSX.writeFile(wb,`Elohim-${tid(HOY)}.xlsx`);
+}
+function exportPDF(){window.print();}
 </script>
 
-<!-- Cargar APIs con callbacks explícitos -->
-<script>
-function gapiLoaded2() { gapi.load('client', gapiLoaded); }
-</script>
+<script>function gapiLoaded2(){gapi.load('client',gapiLoaded);}</script>
 <script src="https://apis.google.com/js/api.js?onload=gapiLoaded2"></script>
 <script src="https://accounts.google.com/gsi/client" onload="gisLoaded()" async defer></script>
-
 </body>
 </html>
